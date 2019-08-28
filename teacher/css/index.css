@@ -1,0 +1,15 @@
+img{
+	height: 70px;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+ul li{
+	text-align: center;
+}
+ul li ul{
+	display: none;
+}
+ul li ul li{
+	text-align: left;
+}
+

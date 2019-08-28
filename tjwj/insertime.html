@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+		<title>毕业生管理系统</title>
+	</head>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link type="text/css" href="css/index.css" rel="stylesheet" />
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script src="laydate/laydate.js"></script>
+	<style>
+		input{
+			margin-top:20px;
+			margin-bottom:10px;
+		}
+		select{
+			width:150px;
+		}
+		form{
+			margin-top:50px;
+		}
+		#sinput{
+			width:80px;
+		}
+	</style>
+	<body>
+		<div style="background-color: #F0F0F0;height: 90px;">
+			<img src="img/jhlogo.jpg" />
+			<ul class="nav nav-tabs" style="width: 20%;float: right;margin-top: 49px;background-color: #F0F0F0;">
+				<li><a href="../denglu/update.php">修改密码</a></li>
+				<li><a href="../denglu/cleansession.php">退出系统</a></li>
+			</ul>
+		</div>
+        <div>
+			<div style="width: 18%;float:left;">
+				<ul class="nav nav-tabs nav-stacked">
+					<li><a href="insertime.html">设置时间</a></li>
+					<li><a href="timenow.php">查看时间</a></li>
+					<li><a href="xtzl.php">选题总览</a></li>
+					<li><a href="fpxs.php">分配选题学生</a></li>
+				</ul>
+			</div>
+			<div style="width: 75%;float:right;">
+				<form action="inserttime.php" method="post">
+					选择任务:<select name="taskid" id="testSelect">
+						<option value="">-</option>
+						<option value="1">选题申报</option>
+						<option value="2">学生选题</option>
+						<option value="3">第一轮筛选</option>
+						<option value="4">第二轮筛选</option>
+						<option value="5">任务书</option>
+						<option value="6">开题报告</option>
+						<option value="7">文献综述</option>
+						<option value="8">外文翻译</option>
+						<option value="9">中期检查表</option>
+						<option value="10">毕业论文第一版</option>
+						<option value="11">毕业论文第二版</option>
+						<option value="12">毕业论文第三版</option>
+						<option value="13">其它</option>
+					</select><br/>
+					开始时间:<input class="laydate-icon" id="start" name="start" style="width:150px;" /><br/>
+					截止时间:<input class="laydate-icon" id="end" name="end" style="width:150px;" /><br/>
+					<script>
+						var start = {
+							elem: '#start',
+							format: 'YYYY/MM/DD hh:mm:ss',
+							min: laydate.now(), //设定最小日期为当前日期
+							max: '2099-06-16 23:59:59', //最大日期
+							istime: true,
+							istoday: false,
+							choose: function(datas){
+								end.min = datas; //开始日选好后，重置结束日的最小日期
+								end.start = datas //将结束日的初始值设定为开始日
+							}
+						};
+						var end = {
+							elem: '#end',
+							format: 'YYYY/MM/DD hh:mm:ss',
+							min: laydate.now(),
+							max: '2099-06-16 23:59:59',
+							istime: true,
+							istoday: false,
+							choose: function(datas){
+								start.max = datas; //结束日选好后，重置开始日的最大日期
+							}
+						};
+						laydate(start);
+						laydate(end);
+					</script>
+					<input type="submit" value="发布" class="btn btn-info" id="sinput"/>
+				</form>
+			</div>
+        </div>
+		<script src="js/jquery.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+	</body>
+</html>
